@@ -1,7 +1,16 @@
+using AM.Data.Context;
+using AM.IoC;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+DependencyContainer.RegisterDependencies(builder.Services);
+
+builder.Services.AddDbContext<AMContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));
 
 var app = builder.Build();
 

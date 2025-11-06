@@ -1,0 +1,6 @@
+
+@media (max-width: 450px) { 
+    .report-container {
+            grid-template-columns: 1fr;
+    }
+}

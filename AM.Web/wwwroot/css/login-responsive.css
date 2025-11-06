@@ -1,0 +1,8 @@
+@media (max-width: 450px) { 
+    .login-container .login-box {
+        width: 85%;;
+    }
+    .login-container .login-box h3 {
+        font-size: 18px;
+    }
+ }

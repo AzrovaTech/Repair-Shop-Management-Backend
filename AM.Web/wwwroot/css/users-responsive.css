@@ -1,0 +1,10 @@
+@media (max-width: 450px) {
+    .container {
+        width: 95%;
+    }
+
+    .users-container .table-container {
+        justify-content: right;
+        align-items: right;
+    }
+}

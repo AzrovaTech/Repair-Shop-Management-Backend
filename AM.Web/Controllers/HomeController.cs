@@ -18,7 +18,7 @@ namespace AM.Web.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult AddUser()
         {
             return View();
         }

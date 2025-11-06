@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "سفارشات کاربر";
+}
+
+<div class="users-container">
+    <div class="add-container">
+        <a asp-controller="User" asp-action="Index">
+            بازگشت به کاربران
+            <i class="fa-solid fa-right-to-bracket"></i>
+        </a>
+    </div>
+    <div class="title-container">
+        <h2>جزییات مشتری: جمشید جمشیدی</h2>
+    </div>
+    <div class="add-container">
+        <a  >
+            افزودن سفارش جدید
+            <i class="fa-solid fa-plus"></i>
+        </a>
+    </div>
+    <div class="table-container">
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>نام سفارش</th>
+                    <th>قیمت</th>
+                    <th>وضعیت</th>
+                    <th>تاریخ دریافت</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <a class="name-link" href="#">تعمیر اره موتوری 200</a>
+                    </td>
+                    <td>1,700,000 تومان</td>
+                    <td>
+                        <p class="order-status-finish">تکمیل شده</p>
+                    </td>
+                    <td>1404/7/20</td>
+                    <td class="action-buttons">
+                        <button class="edit-btn">
+                            <a href="#">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </button>
+                        <button class="delete-btn">
+                            <a href="#" onclick="confirmDelete(event, this)">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>
+                        <a class="name-link" href="#">تعمیر چمن زن سبز</a>
+                    </td>
+                    <td>2,300,000 تومان</td>
+                    <td>
+                        <p class="order-status-finish">تکمیل شده</p>
+                    </td>
+                    <td>1404/7/26</td>
+                    <td class="action-buttons">
+                        <button class="edit-btn">
+                            <a href="#">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </button>
+                        <button class="delete-btn">
+                            <a href="#" onclick="confirmDelete(event, this)">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
