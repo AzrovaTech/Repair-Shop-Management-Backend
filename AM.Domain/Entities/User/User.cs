@@ -16,15 +16,5 @@ namespace AM.Domain.Entities.User
         public string Password { get; set; }
 
         public string FullName { get; set; }
-
-        public string PhoneNumber { get; set; }
-
-        public string NationalCode { get; set; }
-
-        #region Relations
-
-        public ICollection<Order.Order> Orders { get; set; }
-
-        #endregion
     }
 }

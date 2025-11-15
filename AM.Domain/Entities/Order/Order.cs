@@ -21,14 +21,14 @@ namespace AM.Domain.Entities.Order
 
         public DateTime FinishDate { get; set; }
 
-        public string UserId { get; set; }
+        public string CustomerId { get; set; }
 
         public string CategoryId { get; set; }
 
         #region Relations
 
-        [ForeignKey("UserId")]
-        public User.User User { get; set; }
+        [ForeignKey("CustomerId")]
+        public Customer.Customer Customer { get; set; }
 
         [ForeignKey("CategoryId")]
         public Category.Category Category { get; set; }

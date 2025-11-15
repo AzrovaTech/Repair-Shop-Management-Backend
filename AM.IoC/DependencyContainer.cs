@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AM.Core.IServices;
+using AM.Core.Services;
+using AM.Data.Repository;
+using AM.Domain.IRepository;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AM.IoC
 {
@@ -11,7 +10,19 @@ namespace AM.IoC
     {
         public static void RegisterDependencies(IServiceCollection services)
         {
-            // Register your dependencies here
+            #region Repositories
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            #endregion
+
+            #region Services
+            services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            #endregion
         }
     }
 }
