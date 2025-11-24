@@ -10,7 +10,7 @@ namespace AM.Core.Services
     {
         private readonly ICustomerRepository _customerRepository;
         
-        public CustomerService(CustomerRepository customerService)
+        public CustomerService(ICustomerRepository customerService)
         {
             _customerRepository = customerService;
         }
@@ -18,7 +18,7 @@ namespace AM.Core.Services
         public async Task<CustomersIndexDTO> GetAllCustomers()
         {
             ICollection<Customer> rawCustomers = _customerRepository.GetCustomers().Result.ToList();
-            List<CustomerTableDTO> customers = null;
+            List<CustomerTableDTO> customers = new List<CustomerTableDTO>();
             foreach(var customer in rawCustomers)
             {
                 customers.Add(new CustomerTableDTO { 

@@ -1,0 +1,78 @@
+﻿@using AM.Core.DTOs.Customers
+@model CustomersIndexDTO
+@{
+    ViewData["Title"] = "کاربران";
+}
+
+<div class="search-container">
+    <form action="">
+        <div class="search-box">
+            <input type="text" placeholder="نام مشتری رو جستجو کنید !">
+            <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+    </form>
+</div>
+<div class="users-container">
+    <div class="add-container">
+        <a asp-controller="User" asp-action="AddUser">
+            افزودن مشتری جدید
+            <i class="fa-solid fa-user-plus"></i>
+        </a>
+    </div>
+    <div class="table-container">
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>نام</th>
+                    <th>شماره تلفن</th>
+                    <th>کد ملی</th>
+                    <th>مجموع پرداخت</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int i = 1;
+                    foreach(var customer in Model.Customers)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>@customer.FullName</td>
+                            <td>@customer.PhoneNumber</td>
+                            <td>@customer.NationalCode</td>
+                            <td>@customer.TotalPayment.ToString("N0") تومان</td>
+                            <td class="action-buttons">
+                                <div class="detail-btn">
+                                    <a asp-controller="User" asp-action="UserDetails">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    </a>
+                                </div>
+                                <div class="edit-btn">
+                                    <a asp-controller="User" asp-action="EditUser">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                </div>
+                                <div class="delete-btn">
+                                    <a asp-controller="User" asp-action="DeleteUser" asp-route-userId="@customer.CustomerId" onclick="confirmDelete(event, this)">
+                                        @Html.AntiForgeryToken()
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination-container">
+        <a href="#">1</a>
+        <a href="#" class="active-page">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+    </div>
+</div>
