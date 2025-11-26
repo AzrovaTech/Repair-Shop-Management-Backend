@@ -16,7 +16,7 @@
 </div>
 <div class="users-container">
     <div class="add-container">
-        <a asp-controller="User" asp-action="AddUser">
+        <a asp-controller="Customer" asp-action="AddCustomer">
             افزودن مشتری جدید
             <i class="fa-solid fa-user-plus"></i>
         </a>
@@ -46,17 +46,17 @@
                             <td>@customer.TotalPayment.ToString("N0") تومان</td>
                             <td class="action-buttons">
                                 <div class="detail-btn">
-                                    <a asp-controller="User" asp-action="UserDetails">
+                                    <a asp-controller="Customer" asp-action="CustomerDetails">
                                         <i class="fa-solid fa-circle-info"></i>
                                     </a>
                                 </div>
                                 <div class="edit-btn">
-                                    <a asp-controller="User" asp-action="EditUser">
+                                    <a asp-controller="Customer" asp-action="EditCustomer" asp-route-customerId="@customer.CustomerId">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                 </div>
                                 <div class="delete-btn">
-                                    <a asp-controller="User" asp-action="DeleteUser" asp-route-userId="@customer.CustomerId" onclick="confirmDelete(event, this)">
+                                    <a asp-controller="Customer" asp-action="DeleteCustomer" asp-route-customerId="@customer.CustomerId" onclick="confirmDelete(event, this)">
                                         @Html.AntiForgeryToken()
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
@@ -68,11 +68,5 @@
                 }
             </tbody>
         </table>
-    </div>
-    <div class="pagination-container">
-        <a href="#">1</a>
-        <a href="#" class="active-page">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
     </div>
 </div>

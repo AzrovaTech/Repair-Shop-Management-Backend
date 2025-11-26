@@ -1,23 +1,24 @@
-﻿@{
+﻿@model AM.Core.DTOs.Customers.AddCustomerDTO
+@{
     ViewData["Title"] = "افزودن کاربر";
 }
 
 <div class="users-container">
     <div class="add-container">
-        <a asp-controller="User" asp-action="Index">
+        <a asp-controller="Customer" asp-action="Index">
             بازگشت به کاربران
             <i class="fa-solid fa-right-to-bracket"></i>
         </a>
         <div class="form-container">
-            <form action="">
+            <form asp-controller="Customer" asp-action="AddCustomer"  method="POST">
                 <div class="input-box">
-                    <input type="text" placeholder="نام و نام خانوادگی مشتری">
+                    <input asp-for="FullName" type="text" placeholder="نام و نام خانوادگی مشتری">
                 </div>
                 <div class="input-box">
-                    <input type="tel" placeholder="شماره تلفن همراه مشتری">
+                    <input asp-for="PhoneNumber" type="tel" placeholder="شماره تلفن همراه مشتری">
                 </div>
                 <div class="input-box">
-                    <input type="tel" placeholder="کد ملی مشتری">
+                    <input asp-for="NationalCode" type="tel" placeholder="کد ملی مشتری">
                 </div>
                 <div class="submit-box">
                     <button type="submit">افزودن مشتری جدید</button>

@@ -15,5 +15,7 @@ namespace AM.Domain.IRepository
         public Task UpdateCustomer(Customer Customer);
 
         public Task DeleteCustomer(Customer Customer);
+
+        public Task SaveChanges();
     }
 }

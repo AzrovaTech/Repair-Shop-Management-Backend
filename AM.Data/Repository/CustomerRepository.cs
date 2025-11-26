@@ -43,5 +43,10 @@ namespace AM.Data.Repository
         {
             _context.Update(Customer);
         }
+
+        public async Task SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }

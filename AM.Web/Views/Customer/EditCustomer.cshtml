@@ -1,23 +1,25 @@
-﻿@{
+﻿@model AM.Core.DTOs.Customers.EditCustomerDTO
+@{
     ViewData["Title"] = "ویرایش کاربر";
 }
 
 <div class="users-container">
     <div class="add-container">
-        <a asp-controller="User" asp-action="Index">
+        <a asp-controller="Customer" asp-action="Index">
             بازگشت به کاربران
             <i class="fa-solid fa-right-to-bracket"></i>
         </a>
         <div class="form-container">
-            <form action="">
+            <form asp-controller="Customer" asp-action="EditCustomer">
+                <input asp-for="CustomerId" type="text" hidden>
                 <div class="input-box">
-                    <input type="text" value="جمشید جمشیدی" placeholder="نام و نام خانوادگی مشتری">
+                    <input asp-for="FullName" type="text" placeholder="نام و نام خانوادگی مشتری">
                 </div>
                 <div class="input-box">
-                    <input type="tel" value="09914126512" placeholder="شماره تلفن همراه مشتری">
+                    <input asp-for="PhoneNumber" type="tel" placeholder="شماره تلفن همراه مشتری">
                 </div>
                 <div class="input-box">
-                    <input type="tel" value="8820386541" placeholder="کد ملی مشتری">
+                    <input asp-for="NationalCode" type="tel" placeholder="کد ملی مشتری">
                 </div>
                 <div class="submit-box">
                     <button type="submit">ویرایش مشتری</button>
