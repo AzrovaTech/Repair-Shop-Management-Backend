@@ -46,7 +46,7 @@
                             <td>@customer.TotalPayment.ToString("N0") تومان</td>
                             <td class="action-buttons">
                                 <div class="detail-btn">
-                                    <a asp-controller="Customer" asp-action="CustomerDetails">
+                                    <a asp-controller="Customer" asp-action="CustomerDetails" asp-route-customerId="@customer.CustomerId">
                                         <i class="fa-solid fa-circle-info"></i>
                                     </a>
                                 </div>

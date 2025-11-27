@@ -9,10 +9,12 @@ namespace AM.Web.Controllers
     public class CustomerController : Controller
     {
         private readonly ICustomerService _customerService;
+        private readonly IOrderService _orderService;
 
-        public CustomerController(ICustomerService customerService)
+        public CustomerController(ICustomerService customerService, IOrderService orderService)
         {
             _customerService = customerService;
+            _orderService = orderService;
         }
 
         public ActionResult Index()
@@ -21,7 +23,7 @@ namespace AM.Web.Controllers
             return View(result);
         }
         
-        public ActionResult AddCustomer(int id)
+        public ActionResult AddCustomer()
         {
             return View();
         }
@@ -29,15 +31,15 @@ namespace AM.Web.Controllers
         [HttpPost]
         public ActionResult AddCustomer(AddCustomerDTO addCustomer)
         {
-
             _customerService.AddCustomer(addCustomer);
 
             return RedirectToAction(nameof(Index));
         }
 
-        public ActionResult CustomerDetails(int id)
+        public ActionResult CustomerDetails(string customerId)
         {
-            return View();
+            var result = _orderService.GetOrdersByCustomerId(customerId).Result;
+            return View(result);
         }
 
         public ActionResult EditCustomer(string customerId)

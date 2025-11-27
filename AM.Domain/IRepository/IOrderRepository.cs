@@ -8,6 +8,8 @@ namespace AM.Domain.IRepository
 
         public Task<Order> GetOrderById(string orderId);
 
+        public Task<IQueryable<Order>> GetOrdersByCustomerId(string customerId);
+
         public Task<IQueryable<Order>> GetOrderByName(string name);
 
         public Task InsertOrder(Order order);

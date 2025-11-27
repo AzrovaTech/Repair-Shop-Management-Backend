@@ -1,7 +1,8 @@
 ﻿using AM.Core.DTOs.Customers;
+using AM.Core.DTOs.Orders;
 using AM.Core.IServices;
-using AM.Data.Repository;
 using AM.Domain.Entities.Customer;
+using AM.Domain.Entities.Order;
 using AM.Domain.IRepository;
 
 namespace AM.Core.Services
@@ -9,10 +10,12 @@ namespace AM.Core.Services
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _customerRepository;
-        
-        public CustomerService(ICustomerRepository customerService)
+        private readonly IOrderRepository _orderRepository;
+
+        public CustomerService(ICustomerRepository customerService, IOrderRepository orderRepository)
         {
             _customerRepository = customerService;
+            _orderRepository = orderRepository;
         }
 
         public Task AddCustomer(AddCustomerDTO addCustomer)
@@ -35,11 +38,12 @@ namespace AM.Core.Services
         {
             Customer customer = await _customerRepository.GetCustomerById(customerId);
 
-            EditCustomerDTO editCustomer = new EditCustomerDTO { 
+            EditCustomerDTO editCustomer = new EditCustomerDTO
+            {
                 CustomerId = customerId,
                 FullName = customer.FullName,
-                PhoneNumber= customer.PhoneNumber,
-                NationalCode= customer.NationalCode,
+                PhoneNumber = customer.PhoneNumber,
+                NationalCode = customer.NationalCode,
             };
 
             return editCustomer;
@@ -50,7 +54,8 @@ namespace AM.Core.Services
             Customer customer = new Customer();
             customer = _customerRepository.GetCustomerById(editCustomer.CustomerId).Result;
 
-            if (customer == null) {
+            if (customer == null)
+            {
                 return;
             }
 
@@ -66,9 +71,10 @@ namespace AM.Core.Services
         {
             ICollection<Customer> rawCustomers = _customerRepository.GetCustomers().Result.ToList();
             List<CustomerTableDTO> customers = new List<CustomerTableDTO>();
-            foreach(var customer in rawCustomers)
+            foreach (var customer in rawCustomers)
             {
-                customers.Add(new CustomerTableDTO { 
+                customers.Add(new CustomerTableDTO
+                {
                     CustomerId = customer.CustomerId,
                     FullName = customer.FullName,
                     PhoneNumber = customer.PhoneNumber,

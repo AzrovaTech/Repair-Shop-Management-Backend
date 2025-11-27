@@ -33,7 +33,12 @@ namespace AM.Data.Repository
 
         public async Task<IQueryable<Order>> GetOrders()
         {
-            return _context.Orders;
+            return _context.Orders.Include(o => o.Customer);
+        }
+
+        public async Task<IQueryable<Order>> GetOrdersByCustomerId(string customerId)
+        {
+            return _context.Orders.Include(o => o.Customer).Where(o => o.CustomerId == customerId);
         }
 
         public async Task InsertOrder(Order order)
