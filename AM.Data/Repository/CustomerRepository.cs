@@ -26,12 +26,12 @@ namespace AM.Data.Repository
 
         public async Task<IQueryable<Customer>> GetCustomerByName(string name)
         {
-            return _context.Customers.Where(c => c.FullName.Contains(name));
+            return _context.Customers.Where(c => c.FullName.Contains(name)).OrderByDescending(c => c.CreateDate);
         }
 
         public async Task<IQueryable<Customer>> GetCustomers()
         {
-            return _context.Customers;
+            return _context.Customers.OrderByDescending(c => c.CreateDate);
         }
 
         public async Task InsertCustomer(Customer Customer)

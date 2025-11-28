@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace AM.Core.DTOs.Orders
 {
-    public class COrdersIndexDTO
+    public class AddOrderDTO
     {
         public string CustomerId { get; set; }
 
         public string CustomerName { get; set; }
 
-        public List<COrderTableDTO> Orders { get; set; }
+        public string OrderName { get; set; }
+
+        public bool OrderStatus { get; set; }
+
+        public int OrderPrice { get; set; }
+
+        public string OrderDescription { get; set; }
     }
 }

@@ -17,5 +17,7 @@ namespace AM.Domain.IRepository
         public Task UpdateOrder(Order order);
 
         public Task DeleteOrder(Order order);
+
+        public Task SaveChanges();
     }
 }

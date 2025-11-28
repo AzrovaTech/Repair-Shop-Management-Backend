@@ -1,4 +1,5 @@
 ﻿using AM.Core.DTOs.Customers;
+using AM.Core.DTOs.Orders;
 using AM.Core.IServices;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,21 +19,21 @@ namespace AM.Web.Controllers
             var result = _orderService.GetAllOrders().Result;
             return View(result);
         }
-/*
-        public ActionResult AddCustomer(int id)
+
+        public ActionResult AddOrder(string customerId)
         {
-            return View();
+            var result = _orderService.GetAddOrderData(customerId).Result;
+            return View(result);
         }
 
         [HttpPost]
-        public ActionResult AddCustomer(AddCustomerDTO addCustomer)
+        public ActionResult AddOrder(AddOrderDTO addOrder)
         {
-
-            _orderService.AddCustomer(addCustomer);
+            _orderService.AddOrder(addOrder);
 
             return RedirectToAction(nameof(Index));
         }
-
+/*
         public ActionResult CustomerDetails(int id)
         {
             return View();

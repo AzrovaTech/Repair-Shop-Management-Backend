@@ -23,15 +23,10 @@ namespace AM.Domain.Entities.Order
 
         public string CustomerId { get; set; }
 
-        public string CategoryId { get; set; }
-
         #region Relations
 
         [ForeignKey("CustomerId")]
         public Customer.Customer Customer { get; set; }
-
-        [ForeignKey("CategoryId")]
-        public Category.Category Category { get; set; }
 
         #endregion
     }

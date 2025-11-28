@@ -1,10 +1,15 @@
 const dropdownLinks = document.querySelectorAll('.dropdown-content a');
-const statusText =  document.getElementById('status-text');
+const statusText = document.getElementById('status-text');
+const statusValue = document.getElementById('order-status');
 
 dropdownLinks.forEach(link => {
   link.addEventListener('click', function(e) {
-    e.preventDefault();
-    console.log(this.dataset.value);
-    statusText.textContent = this.textContent;
+      statusText.textContent = this.textContent;
+
+      if (this.getAttribute("data-value") === "finished") {
+          statusValue.checked = true;
+      } else {
+          statusValue.checked = false;
+      }
   });
 });

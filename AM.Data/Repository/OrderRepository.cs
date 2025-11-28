@@ -27,13 +27,15 @@ namespace AM.Data.Repository
 
         public async Task<IQueryable<Order>> GetOrderByName(string name)
         {
-            IQueryable<Order> result = _context.Orders.Where(u => u.OrderName.Contains(name));
+            IQueryable<Order> result = _context.Orders.Where(u => u.OrderName.Contains(name))
+                .OrderByDescending(u => u.RecieveDate);
+
             return result;
         }
 
         public async Task<IQueryable<Order>> GetOrders()
         {
-            return _context.Orders.Include(o => o.Customer);
+            return _context.Orders.Include(o => o.Customer).OrderByDescending(u => u.RecieveDate);
         }
 
         public async Task<IQueryable<Order>> GetOrdersByCustomerId(string customerId)
@@ -44,6 +46,11 @@ namespace AM.Data.Repository
         public async Task InsertOrder(Order order)
         {
             await _context.Orders.AddAsync(order);
+        }
+
+        public async Task SaveChanges()
+        {
+            _context.SaveChanges();
         }
 
         public async Task UpdateOrder(Order order)

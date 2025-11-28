@@ -1,0 +1,50 @@
+﻿@using AM.Core.DTOs.Orders
+@model AddOrderDTO
+@{
+    ViewData["Title"] = "افزودن سفارش";
+}
+<div class="users-container">
+    <div class="add-container">
+        <a href="users-detail.html">
+            بازگشت به کاربر
+            <i class="fa-solid fa-right-to-bracket"></i>
+        </a>
+        <div class="title-container">
+            <h2>افزودن سفارش برای @Model.CustomerName</h2>
+        </div>
+        <div class="form-container">
+            <form method="POST" asp-controller="Order" asp-action="AddOrder">
+                <input asp-for="CustomerId" type="text" hidden>
+                <div class="input-box">
+                    <input asp-for="OrderName" type="text" placeholder="نام سفارش">
+                </div>
+                <div class="input-box">
+                    <input asp-for="OrderPrice" type="tel" placeholder="قیمت سفارش">
+                </div>
+                <div class="dropdown">
+                    <input asp-for="OrderStatus" id="order-status" hidden>
+
+                    <div class="status-show">
+                        <p id="status-text">وضعیت سفارش</p>
+                        <i class="fa-solid fa-circle-chevron-down"></i>
+                    </div>
+                    <div class="dropdown-content">
+                        <a class="dropdown-option" data-value="finished">تکمیل شده</a>
+                        <a class="dropdown-option" data-value="working">در حال تکمیل</a>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <textarea asp-for="OrderDescription" id="description"
+                              rows="8"
+                              placeholder="اینجا توضیحات خود را بنویسید..."
+                              class="description-textarea"></textarea>
+                </div>
+                <div class="submit-box">
+                    <button type="submit">افزودن مشتری جدید</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/dropdown.js"></script>

@@ -17,6 +17,33 @@ namespace AM.Core.Services
             _customerRepository = customerRepository;
         }
 
+        public async Task<AddOrderDTO> GetAddOrderData(string customerId) {
+            AddOrderDTO result = new AddOrderDTO
+            {
+                CustomerId = customerId,
+                CustomerName = _customerRepository.GetCustomerById(customerId).Result.FullName
+            };
+
+            return result;
+        }
+
+        public async Task AddOrder(AddOrderDTO addOrder)
+        {
+            Order order = new Order() {
+                CustomerId = addOrder.CustomerId,
+                OrderName = addOrder.OrderName,
+                OrderPrice = addOrder.OrderPrice,
+                OrderStatus = addOrder.OrderStatus,
+                Description = addOrder.OrderDescription,
+                RecieveDate = DateTime.Now,
+            };
+
+            Console.WriteLine("status : " + order.OrderStatus);
+
+            await _orderRepository.InsertOrder(order);
+            await _orderRepository.SaveChanges();
+        }
+
         public async Task<OrdersIndexDTO> GetAllOrders()
         {
             ICollection<Order> rawOrders = _orderRepository.GetOrders().Result.ToList();
@@ -62,8 +89,9 @@ namespace AM.Core.Services
 
             COrdersIndexDTO result = new COrdersIndexDTO
             {
-                Orders = orders,
-                CustomerName = _customerRepository.GetCustomerById(customerId).Result.FullName
+                CustomerId = customerId,
+                CustomerName = _customerRepository.GetCustomerById(customerId).Result.FullName,
+                Orders = orders
             };
 
             return result;

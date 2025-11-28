@@ -14,14 +14,12 @@ namespace AM.IoC
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
             #endregion
 
             #region Services
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IOrderService, OrderService>();
-            services.AddScoped<ICategoryService, CategoryService>();
             #endregion
         }
     }
